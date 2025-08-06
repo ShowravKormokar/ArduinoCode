@@ -1,37 +1,29 @@
-// Configure 5 LED's that turning on one by one and then off reversely
+// Configure 5 LEDs that turn on one by one and then off reversely
+
+int leds[] = {9, 10, 11, 12, 13}; // Array holding LED pin numbers
+int n = 5;
 
 void setup()
 {
-    pinMode(13, OUTPUT); // RED LED
-    pinMode(12, OUTPUT);  // BLUE LED
-    pinMode(11, OUTPUT);  // GREEN LED
-    pinMode(10, OUTPUT);  // YELLOW LED
-    pinMode(9, OUTPUT);  // WHITE LED
+    for (int i = 0; i < n; i++)
+    {
+        pinMode(leds[i], OUTPUT); // Set all LED pins as OUTPUT
+    }
 }
 
 void loop()
 {
-    digitalWrite(13, HIGH); // RED ON
-    delay(1000); // HOLD 1sec
-    digitalWrite(12, HIGH);  // BLUE ON
-    delay(1000); // HOLD 1sec
-    digitalWrite(11, HIGH);  // GREEN ON
-    delay(1000); // HOLD 1sec
-    digitalWrite(10, HIGH);  // YELLOW ON
-    delay(1000); // HOLD 1sec
-    digitalWrite(9, HIGH);  // WHITE ON
-    delay(1000); // HOLD 1sec
+    // Turn ON LEDs from first to last
+    for (int i = 0; i < n; i++)
+    {
+        digitalWrite(leds[i], HIGH);
+        delay(1000);
+    }
 
-    digitalWrite(9, LOW);  // WHITE OFF
-    delay(1000); // HOLD 1sec
-    digitalWrite(10, LOW); // YELLOW OFF
-    delay(1000); // HOLD 1sec
-    digitalWrite(11, LOW);  // GREEN OFF
-    delay(1000); // HOLD 1sec
-    digitalWrite(12, LOW);  // BLUE OFF
-    delay(1000); // HOLD 1sec
-    digitalWrite(13, LOW); // RED OFF
-
-    while (true)
-        ; // stop loop
+    // Turn OFF LEDs from last to first
+    for (int i = n - 1; i >= 0; i--)
+    {
+        digitalWrite(leds[i], LOW);
+        delay(1000);
+    }
 }
