@@ -1,6 +1,6 @@
 // Configure 5 LEDs that turn on one by one and then off reversely
 
-int leds[] = {9, 10, 11, 12, 13}; // Array holding LED pin numbers
+int leds[] = {2, 3, 4, 5, 6}; // Array holding LED pin numbers
 int n = 5;
 
 void setup()
